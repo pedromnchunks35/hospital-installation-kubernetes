@@ -1,2 +1,2 @@
 # Future incrementations
-- SOON
+- Script to automate kubernetes network deployment
