@@ -1,4 +1,6 @@
 # Hospital third intervention
+- `Info`
+  - This repository is to descrive the third intervention in terms of network creation but now it contempls kubernetes concepts and the impact that it has in terms of efficiency and management of the network
 - `Objectives`
   - Know the advantages and disadvantages of each type of network
   - Understand the impact of creating such abstraction over a network
