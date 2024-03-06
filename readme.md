@@ -5,13 +5,13 @@
   - Know the advantages and disadvantages of each type of network
   - Understand the impact of creating such abstraction over a network
 - `Plan`
-  - Design of non-kubernetes network
-  - Design of kubernetes network
-  - Creation of benchmarking metrics
+  - [Design of non-kubernetes network](./Design/Kubernetes/readme.md)
+  - [Design of kubernetes network](./Design/Non-kubernetes/readme.md)
+  - [Creation of benchmarking metrics](./Metrics/readme.md)
   - Benchmarking over non-kubernetes network
   - Benchmarking over kubernetes network
 - `Future incrementions`
   - Load-balancing in terms of instances
-  - Automation of network creation in kubernetes
+  - [Automation of network creation in kubernetes](./Future-incrementations/kubernetes-automation-deployment/readme.md) 
   - Web-app to blockchain visualization
   - Improvement of mock and automation of test network and code of it
