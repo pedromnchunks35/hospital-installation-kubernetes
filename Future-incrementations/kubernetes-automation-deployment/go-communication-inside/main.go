@@ -3,7 +3,6 @@ package main
 import (
 	"context"
 	"fmt"
-	"time"
 
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/client-go/kubernetes"
@@ -27,7 +26,6 @@ func main() {
 		if err != nil {
 			fmt.Errorf("Error getting the services %v", err)
 		}
-		fmt.Println(services)
-		time.Sleep(10 * time.Second)
+		fmt.Println(services.Items[1].Name)
 	}
 }

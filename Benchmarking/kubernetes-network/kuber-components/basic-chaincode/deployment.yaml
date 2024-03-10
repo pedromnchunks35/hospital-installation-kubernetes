@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: basic-chaincode-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      service: basic-chaincode
+  template:
+    metadata:
+      labels:
+        service: basic-chaincode
+    spec:
+      containers:
+      - name:  basic-chaincode-container
+        image: pedrosilvamnchunks/basic-chaincode:latest
+        ports:
+        - containerPort: 80  
+        env: 
+        - name: CHAINCODE_ID
+          value: "basic_1.0:86ba496f42fa40b99352ad0441b479a77dd35cd25c7fbb13e31d10572894abb6"
+        - name: CHAINCODE_SERVER_ADDRESS
+          value: "0.0.0.0:80" 
