@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: orgy-orderer-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      deployment: orgy-couch-peer1
+  template:
+    metadata:
+      labels:
+        deployment: orgy-couch-peer1
+        service: orgy-couch-peer1
+    spec:
+      containers:
+      - name: orgy-orderer-container
+        image: hyperledger/fabric-orderer
+        env:
+          - name: FABRIC_CFG_PATH
+            value: "/tmp/hyperledger/orgy-orderer/config"
+        volumeMounts:
+        - mountPath: "/tmp/hyperledger/orgy-orderer/"
+          name: orgy-orderer-volume
+      volumes:
+      - name: orgy-orderer-volume
+        persistentVolumeClaim:
+          claimName: pvc-orgy-orderer   

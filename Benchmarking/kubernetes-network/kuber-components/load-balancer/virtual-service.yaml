@@ -1,0 +1,15 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: hlf-network
+spec:
+  hosts:
+    - "hlf-network"
+  tcp: 
+    - match:
+        - port: 80 ## This port should be the one used when accessing from the exterior
+      route: # Here are the details within the cluster
+        - destination:
+            host: hlf-network.default.svc.cluster.local
+            port:
+              number: 80

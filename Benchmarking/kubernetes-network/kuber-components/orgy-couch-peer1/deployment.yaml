@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: orgy-couch-peer1-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      deployment: orgy-couch-peer1
+  template:
+    metadata:
+      labels:
+        deployment: orgy-couch-peer1
+        service: orgy-couch-peer1
+    spec:
+      containers:
+        - name: orgy-peer1-couch-container
+          image: couchdb
+          env:
+            - name: COUCHDB_BIND_ADDRESS
+              value: "0.0.0.0"
+            - name: COUCHDB_USER
+              value: admin
+            - name: COUCHDB_PASSWORD
+              value: "12341234"
+          volumeMounts:
+          - mountPath: "/opt/couchdb/data"
+            name: orgy-peer1-couch-volume
+      volumes:
+      - name: orgy-couch-peer1-volume
+        persistentVolumeClaim:
+          claimName:  pvc-orgy-couch-peer1

@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata: 
+  name: basic-chaincode
+spec:
+  selector:
+      service: basic-chaincode
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+      name: tcp

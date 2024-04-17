@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: orgz-couch-peer1-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      deployment: orgz-couch-peer1
+  template:
+    metadata:
+      labels:
+        deployment: orgz-couch-peer1
+        service: orgz-couch-peer1
+    spec:
+      containers:
+        - name: orgz-peer1-couch-container
+          image: couchdb
+          env:
+            - name: COUCHDB_BIND_ADDRESS
+              value: "0.0.0.0"
+            - name: COUCHDB_USER
+              value: admin
+            - name: COUCHDB_PASSWORD
+              value: "12341234"
+          volumeMounts:
+          - mountPath: "/opt/couchdb/data"
+            name: orgz-peer1-couch-volume
+      volumes:
+      - name: orgz-couch-peer1-volume
+        persistentVolumeClaim:
+          claimName:  pvc-orgz-couch-peer1
