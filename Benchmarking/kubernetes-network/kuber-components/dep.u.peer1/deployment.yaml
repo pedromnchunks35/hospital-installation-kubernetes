@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dep.u.peer1.deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      deployment: dep.u.peer1
+  template:
+    metadata:
+      labels:
+        deployment: dep.u.peer1
+        service: dep.u.peer1
+    spec:
+      containers:
+        - name: dep.u.peer1.container
+          image: hyperledger/fabric-peer
+          env:
+            - name: FABRIC_CFG_PATH
+              value: "/tmp/hyperledger/dep.u.peer1/config"
+          volumeMounts:
+            - mountPath: "/tmp/hyperledger/dep.u.peer1/"
+              name: dep.u.peer1.volume
+          lifecycle:
+          postStart:
+            exec:
+              command:
+                - "/bin/sh"
+                - "-c"
+                - |
+                  sleep 30s &&
+                  apt update &&
+                  apt install -y jq
+                  chmod +777 /tmp/hyperledger/dep.u.peer1/config/builder/bin/*
+        - name: dep.u.peer1.grpc.automation.container
+          image: pedrosilvamnchunks/peer-grpc:latest
+          env:
+            - name: FABRIC_CFG_PATH
+              value: "/tmp/hyperledger/dep.u.peer1/config"
+          volumeMounts:
+            - mountPath: "/tmp/hyperledger/dep.u.peer1"
+              name: dep.u.peer1.volume
+      volumes:
+        - name: dep.u.peer1.volume
+          persistentVolumeClaim:
+            claimName: pvc.dep.u.peer1
