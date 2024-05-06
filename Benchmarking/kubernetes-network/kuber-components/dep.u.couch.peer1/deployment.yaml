@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dep.u.couch.peer1.deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      deployment: dep.u.couch.peer1
+  template:
+    metadata:
+      labels:
+        deployment: dep.u.couch.peer1
+        service: dep.u.couch.peer1
+    spec:
+      containers:
+        - name: dep.u.peer1.couch.container
+          image: couchdb
+          env:
+            - name: COUCHDB_BIND_ADDRESS
+              value: "0.0.0.0"
+            - name: COUCHDB_USER
+              value: admin
+            - name: COUCHDB_PASSWORD
+              value: "12341234"
+          volumeMounts:
+          - mountPath: "/opt/couchdb/data"
+            name: dep.u.peer1.couch.volume
+      lifecycle:
+        postStart:
+          exec:
+            command:
+              - "/bin/sh"
+              - "-c"
+              - "sleep 30s"
+              - "curl -X PUT http://admin:12341234@dep.u.peer1.couch/_users"
+              - "curl -X PUT http://admin:12341234@dep.u.peer1.couch/_replicator"
+              - "curl -X PUT http://admin:12341234@dep.u.peer1.couch/_global_changes"
+      volumes:
+      - name: dep.u.couch.peer1.volume
+        persistentVolumeClaim:
+          claimName:  pvc.dep.u.couch.peer1

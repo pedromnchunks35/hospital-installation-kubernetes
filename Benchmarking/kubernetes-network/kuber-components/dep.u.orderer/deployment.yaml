@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dep.u.orderer.deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      deployment: dep.u.orderer
+  template:
+    metadata:
+      labels:
+        deployment: dep.u.orderer
+        service: dep.u.orderer
+    spec:
+      containers:
+        - name: dep.u.orderer.container
+          image: hyperledger/fabric-orderer
+          env:
+            - name: FABRIC_CFG_PATH
+              value: "/tmp/hyperledger/dep.u.orderer/config"
+          volumeMounts:
+            - mountPath: "/tmp/hyperledger/dep.u.orderer/"
+              name: dep.u.orderer.volume
+        - name: dep.u.orderer.grpc.automation.container
+          image: pedrosilvamnchunks/orderer-grpc:latest
+          env:
+            - name: FABRIC_CFG_PATH
+              value: "/tmp/hyperledger/dep.u.orderer/config"
+          volumeMounts:
+            - mountPath: "/tmp/hyperledger/dep.u.orderer/"
+              name: dep.u.orderer.volume
+      volumes:
+        - name: dep.u.orderer.volume
+          persistentVolumeClaim:
+            claimName: pvc.dep.u.orderer
