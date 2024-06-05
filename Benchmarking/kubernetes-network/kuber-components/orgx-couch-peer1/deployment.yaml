@@ -34,7 +34,6 @@ spec:
                   - "-c"
                   - |
                     sleep 30 &&
-                    echo "Hello world" >> /tmp/t.txt &&
                     curl -X PUT http://admin:12341234@localhost:5984/_users &&
                     curl -X PUT http://admin:12341234@localhost:5984/_replicator &&
                     curl -X PUT http://admin:12341234@localhost:5984/_global_changes

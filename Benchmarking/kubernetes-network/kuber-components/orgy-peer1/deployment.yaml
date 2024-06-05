@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: orgy-peer1.deployment
+  name: orgy-peer1-deployment
 spec:
   replicas: 1
   selector:
@@ -23,16 +23,16 @@ spec:
             - mountPath: "/tmp/hyperledger/orgy-peer1/"
               name: orgy-peer1-volume
           lifecycle:
-          postStart:
-            exec:
-              command:
-                - "/bin/sh"
-                - "-c"
-                - |
-                  sleep 30s &&
-                  apt update &&
-                  apt install -y jq
-                  chmod +777 /tmp/hyperledger/orgy-peer1/config/builder/bin/*
+            postStart:
+              exec:
+                command:
+                  - "/bin/sh"
+                  - "-c"
+                  - |
+                    sleep 30s &&
+                    apt update &&
+                    apt install -y jq
+                    chmod +777 /tmp/hyperledger/orgy-peer1/config/builder/bin/*
         - name: orgy-peer1-grpc-automation-container
           image: pedrosilvamnchunks/peer-grpc:latest
           env:

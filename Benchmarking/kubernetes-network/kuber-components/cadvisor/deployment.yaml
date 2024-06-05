@@ -1,0 +1,179 @@
+---
+# MACHINE CHP-SRVAIDA69.chuporto.min-saude.pt
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: machine-srvaida69-cadvisor
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      deployment: machine-srvaida69-cadvisor
+  template:
+    metadata:
+      labels:
+        deployment: machine-srvaida69-cadvisor
+        service: machine-srvaida69-cadvisor
+    spec:
+      containers:
+        - name: machine-srvaida69-cadvisor-container
+          image: gcr.io/cadvisor/cadvisor:v0.47.2
+          securityContext:
+            privileged: true
+            allowPrivilegeEscalation: true
+          volumeMounts:
+            - name: rootfs
+              mountPath: /rootfs
+              readOnly: true
+            - name: var-run
+              mountPath: /var/run
+              readOnly: true
+            - name: sys
+              mountPath: /sys
+              readOnly: true
+            - name: docker
+              mountPath: /var/lib/docker
+              readOnly: true
+            - name: disk
+              mountPath: /dev/disk
+              readOnly: true
+      automountServiceAccountToken: false
+      terminationGracePeriodSeconds: 30
+      volumes:
+        - name: rootfs
+          hostPath:
+            path: /
+        - name: var-run
+          hostPath:
+            path: /var/run
+        - name: sys
+          hostPath:
+            path: /sys
+        - name: docker
+          hostPath:
+            path: /var/lib/docker
+        - name: disk
+          hostPath:
+            path: /dev/disk
+      nodeSelector:
+        node-name: "chp-srvaida69"
+---
+# MACHINE CHP-SRVAIDA70.chuporto.min-saude.pt
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: machine-srvaida70-cadvisor
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      deployment: machine-srvaida70-cadvisor
+  template:
+    metadata:
+      labels:
+        deployment: machine-srvaida70-cadvisor
+        service: machine-srvaida70-cadvisor
+    spec:
+      containers:
+        - name: machine-srvaida70-cadvisor-container
+          image: gcr.io/cadvisor/cadvisor:v0.47.2
+          securityContext:
+            privileged: true
+            allowPrivilegeEscalation: true
+          volumeMounts:
+            - name: rootfs
+              mountPath: /rootfs
+              readOnly: true
+            - name: var-run
+              mountPath: /var/run
+              readOnly: true
+            - name: sys
+              mountPath: /sys
+              readOnly: true
+            - name: docker
+              mountPath: /var/lib/docker
+              readOnly: true
+            - name: disk
+              mountPath: /dev/disk
+              readOnly: true
+      automountServiceAccountToken: false
+      terminationGracePeriodSeconds: 30
+      volumes:
+        - name: rootfs
+          hostPath:
+            path: /
+        - name: var-run
+          hostPath:
+            path: /var/run
+        - name: sys
+          hostPath:
+            path: /sys
+        - name: docker
+          hostPath:
+            path: /var/lib/docker
+        - name: disk
+          hostPath:
+            path: /dev/disk
+      nodeSelector:
+        node-name: "chp-srvaida70"
+---
+# MACHINE SA-SRVAIDA77
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: machine-srvaida77-cadvisor
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      deployment: machine-srvaida77-cadvisor
+  template:
+    metadata:
+      labels:
+        deployment: machine-srvaida77-cadvisor
+        service: machine-srvaida77-cadvisor
+    spec:
+      containers:
+        - name: machine-srvaida77-cadvisor-container
+          image: gcr.io/cadvisor/cadvisor:v0.47.2
+          securityContext:
+            privileged: true
+            allowPrivilegeEscalation: true
+          volumeMounts:
+            - name: rootfs
+              mountPath: /rootfs
+              readOnly: true
+            - name: var-run
+              mountPath: /var/run
+              readOnly: true
+            - name: sys
+              mountPath: /sys
+              readOnly: true
+            - name: docker
+              mountPath: /var/lib/docker
+              readOnly: true
+            - name: disk
+              mountPath: /dev/disk
+              readOnly: true
+      automountServiceAccountToken: false
+      terminationGracePeriodSeconds: 30
+      volumes:
+        - name: rootfs
+          hostPath:
+            path: /
+        - name: var-run
+          hostPath:
+            path: /var/run
+        - name: sys
+          hostPath:
+            path: /sys
+        - name: docker
+          hostPath:
+            path: /var/lib/docker
+        - name: disk
+          hostPath:
+            path: /dev/disk
+      nodeSelector:
+        node-name: "chp-srvaida70"
+---
+
