@@ -14,14 +14,14 @@ spec:
         service: orgy-orderer
     spec:
       containers:
-        - name: orgy-orderer.container
+        - name: orgy-orderer-container
           image: hyperledger/fabric-orderer
           env:
             - name: FABRIC_CFG_PATH
               value: "/tmp/hyperledger/orgy-orderer/config"
           volumeMounts:
             - mountPath: "/tmp/hyperledger/orgy-orderer/"
-              name: orgy-orderer.volume
+              name: orgy-orderer-volume
         - name: orgy-orderer-grpc-automation-container
           image: pedrosilvamnchunks/orderer-grpc:latest
           env:

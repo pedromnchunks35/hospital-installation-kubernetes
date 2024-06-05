@@ -1,0 +1,50 @@
+---
+# MACHINE CHP-SRVAIDA69.chuporto.min-saude.pt
+apiVersion: v1
+kind: Service
+metadata:
+  name: machine-srvaida69-cadvisor
+spec:
+  selector:
+    service: machine-srvaida69-cadvisor
+  ports:
+    - protocol: TCP
+      targetPort: 8080
+      port: 9800
+      nodePort: 30009
+      name: tcp
+  type: LoadBalancer
+---
+# MACHINE CHP-SRVAIDA70.chuporto.min-saude.pt
+apiVersion: v1
+kind: Service
+metadata:
+  name: machine-srvaida70-cadvisor
+spec:
+  selector:
+    service: machine-srvaida70-cadvisor
+  ports:
+    - protocol: TCP
+      targetPort: 8080
+      nodePort: 30010
+      port: 9800
+      name: tcp
+  type: LoadBalancer
+---
+# MACHINE CHP-SRVAIDA77.chuporto.min-saude.pt
+apiVersion: v1
+kind: Service
+metadata:
+  name: machine-srvaida77-cadvisor
+spec:
+  selector:
+    service: machine-srvaida77-cadvisor
+  ports:
+    - protocol: TCP
+      targetPort: 8080
+      nodePort: 30011
+      port: 9800
+      name: tcp
+  type: LoadBalancer
+---
+

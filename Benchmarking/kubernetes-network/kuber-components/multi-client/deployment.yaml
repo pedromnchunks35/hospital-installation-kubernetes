@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: multi-client-pod
+  labels:
+    service: multi-client
+spec:
+  containers:
+  - name: multi-client-container
+    image: pedrosilvamnchunks/multi-client:latest

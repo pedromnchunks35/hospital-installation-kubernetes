@@ -24,19 +24,20 @@ spec:
             - name: COUCHDB_PASSWORD
               value: "12341234"
           volumeMounts:
-          - mountPath: "/opt/couchdb/data"
-            name: orgy-couch-peer1-volume
-      lifecycle:
-        postStart:
-          exec:
-            command:
-              - "/bin/sh"
-              - "-c"
-              - "sleep 30s"
-              - "curl -X PUT http://admin:12341234@orgy-couch-peer1/_users"
-              - "curl -X PUT http://admin:12341234@orgy-couch-peer1/_replicator"
-              - "curl -X PUT http://admin:12341234@orgy-couch-peer1/_global_changes"
+            - mountPath: "/opt/couchdb/data"
+              name: orgy-couch-peer1-volume
+          lifecycle:
+            postStart:
+              exec:
+                command:
+                  - "/bin/sh"
+                  - "-c"
+                  - |
+                    sleep 30 &&
+                    curl -X PUT http://admin:12341234@localhost:5984/_users &&
+                    curl -X PUT http://admin:12341234@localhost:5984/_replicator &&
+                    curl -X PUT http://admin:12341234@localhost:5984/_global_changes
       volumes:
-      - name: orgy-couch-peer1-volume
-        persistentVolumeClaim:
-          claimName:  pvc-orgy-couch-peer1
+        - name: orgy-couch-peer1-volume
+          persistentVolumeClaim:
+            claimName: pvc-orgy-couch-peer1

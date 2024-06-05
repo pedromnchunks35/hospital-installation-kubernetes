@@ -26,16 +26,17 @@ spec:
           volumeMounts:
             - mountPath: "/opt/couchdb/data"
               name: orgz-couch-peer1-volume
-      lifecycle:
-        postStart:
-          exec:
-            command:
-              - "/bin/sh"
-              - "-c"
-              - "sleep 30s"
-              - "curl -X PUT http://admin:12341234@orgz-couch-peer1/_users"
-              - "curl -X PUT http://admin:12341234@orgz-couch-peer1/_replicator"
-              - "curl -X PUT http://admin:12341234@orgz-couch-peer1/_global_changes"
+          lifecycle:
+            postStart:
+              exec:
+                command:
+                  - "/bin/sh"
+                  - "-c"
+                  - |
+                    sleep 30 &&
+                    curl -X PUT http://admin:12341234@localhost:5984/_users &&
+                    curl -X PUT http://admin:12341234@localhost:5984/_replicator &&
+                    curl -X PUT http://admin:12341234@localhost:5984/_global_changes
       volumes:
         - name: orgz-couch-peer1-volume
           persistentVolumeClaim:

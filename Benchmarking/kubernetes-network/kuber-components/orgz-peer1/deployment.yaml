@@ -23,16 +23,16 @@ spec:
             - mountPath: "/tmp/hyperledger/orgz-peer1/"
               name: orgz-peer1-volume
           lifecycle:
-          postStart:
-            exec:
-              command:
-                - "/bin/sh"
-                - "-c"
-                - |
-                  sleep 30s &&
-                  apt update &&
-                  apt install -y jq
-                  chmod +777 /tmp/hyperledger/orgz-peer1/config/builder/bin/*
+            postStart:
+              exec:
+                command:
+                  - "/bin/sh"
+                  - "-c"
+                  - |
+                    sleep 30s &&
+                    apt update &&
+                    apt install -y jq
+                    chmod +777 /tmp/hyperledger/orgz-peer1/config/builder/bin/*
         - name: orgz-peer1-grpc-automation-container
           image: pedrosilvamnchunks/peer-grpc:latest
           env:
@@ -40,7 +40,7 @@ spec:
               value: "/tmp/hyperledger/orgz-peer1/config"
           volumeMounts:
             - mountPath: "/tmp/hyperledger/orgz-peer1"
-              name: orgz-peer1.volume
+              name: orgz-peer1-volume
       volumes:
         - name: orgz-peer1-volume
           persistentVolumeClaim:
