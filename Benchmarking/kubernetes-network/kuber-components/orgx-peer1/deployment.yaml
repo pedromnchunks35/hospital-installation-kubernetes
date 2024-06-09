@@ -12,6 +12,7 @@ spec:
       labels:
         deployment: orgx-peer1
         service: orgx-peer1
+        global-service: peer-load-balancing
     spec:
       containers:
         - name: orgx-peer1-container
