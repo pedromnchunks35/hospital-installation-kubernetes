@@ -10,3 +10,7 @@ spec:
       port: 80
       targetPort: 7777
       name: tcp
+    - protocol: TCP
+      name: tcp-grpc-automation-project
+      port: 82
+      targetPort: 2000

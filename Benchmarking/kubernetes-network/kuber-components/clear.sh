@@ -1,17 +1,17 @@
 # DELETE EVERYTHING / STOP EVERYTHING
-for file in ./kubernetes-components/*/*.yaml; do
+for file in ./*/*.yaml; do
     kubectl delete -f "$file" --force
 done
 # INIT THE COUCHS FIRSTLY
-for file in ./kubernetes-components/org*-couch-*/*.yaml; do
+for file in ./org*-couch-*/*.yaml; do
     kubectl apply -f "$file"
 done
 # INIT THE PEERS
-for file in ./kubernetes-components/org*-p*/*.yaml; do
+for file in ./org*-p*/*.yaml; do
     kubectl apply -f "$file"
 done
 # INIT ORDERERS
-for file in ./kubernetes-components/org*-or*/*.yaml;do
+for file in ./org*-or*/*.yaml;do
     kubectl apply -f "$file"
 done
 # INIT THE REST

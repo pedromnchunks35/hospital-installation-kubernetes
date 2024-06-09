@@ -5,3 +5,14 @@
 - Join the node to the main cluster
 - Install calico in the control plane
     - In the latest resources we have there how we should edit the calico configs
+- Info
+  - Unfortunely the load balancer is not working in current settings
+  - We should make it as nodePort for now
+    - `PORTS`
+      - ca -> 30007
+      - tls-ca -> 30008
+      - multi-client -> 30009
+  - We will firstly create or network using the admin network manager
+    - To do this we must change the ip in the configurations of the admin manager for the new ip with the nodePort
+    - Also dont forget to allow the RBAC account default
+      - `kubectl create clusterrolebinding default-view --clusterrole=view --serviceaccount=default:default`
