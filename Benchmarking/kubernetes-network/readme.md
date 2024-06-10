@@ -11,8 +11,12 @@
     - `PORTS`
       - ca -> 30007
       - tls-ca -> 30008
-      - multi-client -> 30009
+      - cadvisor -> 30009-30011
+      - multi-client -> 30012
   - We will firstly create or network using the admin network manager
     - To do this we must change the ip in the configurations of the admin manager for the new ip with the nodePort
     - Also dont forget to allow the RBAC account default
       - `kubectl create clusterrolebinding default-view --clusterrole=view --serviceaccount=default:default`
+  - We spot a error in the image of the multi client where we create a client and set the tls-msp enviroment variable as the old tls ca cert
+    - To fix this and make it universal we need to change the name of the admin-tls-msp tlscacert to cacert-tls-admin or something more "universal"
+    - Also we are thinking in changing the jenkins script to grab where the image is beeing built and also to grab where it should make the clear of the images that have that image
