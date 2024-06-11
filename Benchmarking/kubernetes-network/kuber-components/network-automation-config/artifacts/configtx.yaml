@@ -38,7 +38,7 @@ Organizations:
         Rule: "OR('OrgxMSP.admin')"
       Endorsement:
         Type: Signature
-        Rule: "OR('OrgxMSP.peer')"
+        Rule: "OR('OrgxMSP.peer','OrgxMSP.client','OrgxMSP.admin')"
 
     OrdererEndpoints:
       - orgx-orderer:80
@@ -72,7 +72,7 @@ Organizations:
         Rule: "OR('OrgyMSP.admin')"
       Endorsement:
         Type: Signature
-        Rule: "OR('OrgyMSP.peer')"
+        Rule: "OR('OrgyMSP.peer','OrgyMSP.client','OrgyMSP.admin')"
 
     OrdererEndpoints:
       - orgy-orderer:80
@@ -106,7 +106,7 @@ Organizations:
         Rule: "OR('OrgzMSP.admin')"
       Endorsement:
         Type: Signature
-        Rule: "OR('OrgzMSP.peer')"
+        Rule: "OR('OrgzMSP.peer','OrgzMSP.client','OrgzMSP.admin')"
 
     OrdererEndpoints:
       - orgz-orderer:80
@@ -197,13 +197,13 @@ Application: &ApplicationDefaults
       Rule: "ANY Writers"
     Admins:
       Type: ImplicitMeta
-      Rule: "MAJORITY Admins"
+      Rule: "ANY Admins"
     LifecycleEndorsement:
       Type: ImplicitMeta
-      Rule: "MAJORITY Endorsement"
+      Rule: "ANY Endorsement"
     Endorsement:
       Type: ImplicitMeta
-      Rule: "MAJORITY Endorsement"
+      Rule: "ANY Endorsement"
   Capabilities: *ApplicationCapabilities
 ################################################################################
 #

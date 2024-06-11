@@ -13,7 +13,7 @@ spec:
       port: 9800
       nodePort: 30009
       name: tcp
-  type: LoadBalancer
+  type: NodePort
 ---
 # MACHINE CHP-SRVAIDA70.chuporto.min-saude.pt
 apiVersion: v1
@@ -29,7 +29,7 @@ spec:
       nodePort: 30010
       port: 9800
       name: tcp
-  type: LoadBalancer
+  type: NodePort
 ---
 # MACHINE CHP-SRVAIDA77.chuporto.min-saude.pt
 apiVersion: v1
@@ -45,6 +45,6 @@ spec:
       nodePort: 30011
       port: 9800
       name: tcp
-  type: LoadBalancer
+  type: NodePort
 ---
 
