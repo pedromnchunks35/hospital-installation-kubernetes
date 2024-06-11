@@ -84,7 +84,7 @@ const tasks = async () => {
         `
       })
       console.log("Receipt for the orderer " + orderer_services[index] + " join: " + JSON.stringify(receipt_join_orderer, null, '\t'))
-      await delay(7000)
+      await delay(8000)
     } catch (error) {
       console.log("Error with the orderer " + orderer_services[index] + " " + error)
     }
