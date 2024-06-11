@@ -20,3 +20,22 @@
   - We spot a error in the image of the multi client where we create a client and set the tls-msp enviroment variable as the old tls ca cert
     - To fix this and make it universal we need to change the name of the admin-tls-msp tlscacert to cacert-tls-admin or something more "universal"
     - Also we are thinking in changing the jenkins script to grab where the image is beeing built and also to grab where it should make the clear of the images that have that image
+# INFO
+- For the first benchmarking every component will have a port as gateway
+  - Ports
+    - orgx-orderer -> 30013
+    - orgy-orderer -> 30014
+    - orgz-orderer -> 30015
+    - orgx-peer1 -> 30016
+    - orgy-peer1 -> 30017
+    - orgz-peer1 -> 30018
+  - Obsolete ports
+    - orgx-orderer-admin -> 30040
+    - orgx-orderer-automation -> 30041
+    - orgy-orderer-admin -> 30042
+    - orgy-orderer-automation -> 30043
+    - orgz-orderer-admin -> 30044
+    - orgz-orderer-automation -> 30045
+    - orgx-peer-automation -> 30046
+    - orgy-peer-automation -> 30047
+    - orgz-peer-automation -> 30048

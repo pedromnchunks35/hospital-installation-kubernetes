@@ -12,6 +12,7 @@ spec:
       labels:
         deployment: orgy-orderer
         service: orgy-orderer
+        general: all-orderers
     spec:
       containers:
         - name: orgy-orderer-container

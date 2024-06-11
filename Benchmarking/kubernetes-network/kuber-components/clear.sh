@@ -21,4 +21,3 @@ kubectl apply -f ./cadvisor/.
 kubectl apply -f ./multi-client/.
 kubectl apply -f ./basic-chaincode/.
 kubectl apply -f ./load-balancer/.
-kubectl apply -f ./load-balancer-all-peers-service/.

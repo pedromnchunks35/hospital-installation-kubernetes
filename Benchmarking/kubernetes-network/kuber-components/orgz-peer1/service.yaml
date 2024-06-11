@@ -10,7 +10,10 @@ spec:
       port: 80
       targetPort: 7777
       name: tcp
+      nodePort: 30018
     - protocol: TCP
       name: tcp-grpc-automation-project
       port: 82
       targetPort: 2000
+      nodePort: 30048
+  type: NodePort

@@ -1,0 +1,51 @@
+pipeline{
+    agent{
+        node{
+            label 'default'
+        }
+    }
+    environment{
+        KUBECONFIG = "/etc/kubernetes/admin_hospital.conf";
+        PATH="$PATH:/run/media/pedromn35/disk2-home/manually-installed-bins/fabric-samples/bin/:/run/media/pedromn35/disk2-home/manually-installed-bins/go/bin/";
+        YAML_FILES_LOCATION="/run/media/pedromn35/disk2-home/projects/hospital-installation-kubernetes/Benchmarking/kubernetes-network/kuber-components/";
+        TS_SCRIPT_NETWORK_AUTOMATION_LOCATION="/run/media/pedromn35/disk2-home/projects/hospital-installation-kubernetes/Benchmarking/kubernetes-network/kuber-components/network-automation-config";
+        BENCHMARKING_FILES_LOCATION="/run/media/pedromn35/disk2-home/projects/hospital2/monitoring/caliper-k8";
+        BENCH_PROFILE="finaltest";
+    }
+    stages{
+        stage('Erase Network'){
+           // WE WILL GRAB THE PASSWORD FROM THE DEPENDENCIES.SH FILE AND THEN INVOKE THE SCRIPT INSIDE OF THE MACHINE CALLED ./RESET-K8.SH
+           expect'''
+           spawn source ./dependencies.sh
+           spawn ssh -l root CHP-SRVAIDA69.chuporto.min-saude.pt "./reset-k8.sh"
+           expect "password:"
+           send $PASSWORD_MACHINE_69
+           spawn ssh -l root CHP-SRVAIDA70.chuporto.min-saude.pt "./reset-k8.sh"
+           send $PASSWORD_MACHINE_70
+           spawn ssh -l root SA-SRVAIDA77 "./reset-k8.sh"
+           send $PASSWORD_MACHINE_77
+           '''
+        }
+        stage('Restart K8 Components'){
+          // RESET EVERY K8 COMPONENT
+          ssh'''
+          cd $YAML_FILES_LOCATION
+          ./clear.sh
+          '''
+        }
+        stage('Config components'){
+        // SIMPLY INIT THE SCRIPT THAT CONFIGS THE DESIRED NETWORK
+        ssh'''
+        cd $TS_SCRIPT_NETWORK_AUTOMATION_LOCATION
+        node main.js
+        '''
+        }
+        stage('Start Benchmarking'){
+            // SIMPLY START A BENCHMARKING USING THE RESPECTIVE PROFILE
+            ssh'''
+            cd $BENCHMARKING_FILES_LOCATION
+            ./start.sh $BENCH_PROFILE
+            '''
+        }
+    }
+}
