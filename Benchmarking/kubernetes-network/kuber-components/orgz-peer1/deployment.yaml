@@ -12,6 +12,7 @@ spec:
       labels:
         deployment: orgz-peer1
         service: orgz-peer1
+        general: all-peers
     spec:
       containers:
         - name: orgz-peer1-container

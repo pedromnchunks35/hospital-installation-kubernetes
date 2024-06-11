@@ -12,6 +12,7 @@ spec:
       labels:
         deployment: orgz-orderer
         service: orgz-orderer
+        general: all-orderers
     spec:
       containers:
         - name: orgz-orderer-container

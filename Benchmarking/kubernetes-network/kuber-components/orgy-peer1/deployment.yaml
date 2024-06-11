@@ -12,6 +12,7 @@ spec:
       labels:
         deployment: orgy-peer1
         service: orgy-peer1
+        general: all-peers
     spec:
       containers:
         - name: orgy-peer1-container

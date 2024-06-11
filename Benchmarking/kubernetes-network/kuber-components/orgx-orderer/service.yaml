@@ -10,11 +10,15 @@ spec:
       name: tcp-main-port
       port: 80
       targetPort: 7777
+      nodePort: 30013
     - protocol: TCP
       name: tcp-admin-port
       port: 81
       targetPort: 9006
+      nodePort: 30040
     - protocol: TCP
       name: tcp-grpc-automation-project
       port: 82
       targetPort: 2000
+      nodePort: 30041
+  type: NodePort
