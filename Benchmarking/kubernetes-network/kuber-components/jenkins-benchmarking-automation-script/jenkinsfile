@@ -5,12 +5,12 @@ pipeline {
         }
     }
     environment {
-        KUBECONFIG = "/etc/kubernetes/admin_hospital.conf"
+        KUBECONFIG = '/etc/kubernetes/admin_hospital.conf'
         PATH = "$PATH:/run/media/pedromn35/disk2-home/manually-installed-bins/fabric-samples/bin/:/run/media/pedromn35/disk2-home/manually-installed-bins/go/bin/"
-        YAML_FILES_LOCATION = "/run/media/pedromn35/disk2-home/projects/hospital-installation-kubernetes/Benchmarking/kubernetes-network/kuber-components/"
-        TS_SCRIPT_NETWORK_AUTOMATION_LOCATION = "/run/media/pedromn35/disk2-home/projects/hospital-installation-kubernetes/Benchmarking/kubernetes-network/kuber-components/network-automation-config"
-        BENCHMARKING_FILES_LOCATION = "/run/media/pedromn35/disk2-home/projects/hospital2/monitoring/caliper-k8"
-        BENCH_PROFILE = "finaltest"
+        YAML_FILES_LOCATION = '/run/media/pedromn35/disk2-home/projects/hospital-installation-kubernetes/Benchmarking/kubernetes-network/kuber-components/'
+        TS_SCRIPT_NETWORK_AUTOMATION_LOCATION = '/run/media/pedromn35/disk2-home/projects/hospital-installation-kubernetes/Benchmarking/kubernetes-network/kuber-components/network-automation-config'
+        BENCHMARKING_FILES_LOCATION = '/run/media/pedromn35/disk2-home/projects/hospital2/monitoring/caliper-k8'
+        BENCH_PROFILE = 'finaltest'
     }
     stages {
         stage('Erase Network') {

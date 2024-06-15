@@ -1,0 +1,9 @@
+channel join --channelID channel3 --config-block ../blocks/genesis_block_channel3.pb -o orgz-orderer:81 --ca-file ../admin-tls-msp/tlscacerts/tls-CHP-SRVAIDA69-chuporto-min-saude-pt-30008.pem --client-cert ../admin-tls-msp/signcerts/cert.pem --client-key ../admin-tls-msp/keystore/key.pem
+channel fetch config --channelID channel3 --cafile ../admin-tls-msp/tlscacerts/cacert-tls-admin.pem --tls  --certfile ../admin-tls-msp/signcerts/cert.pem --keyfile ../admin-tls-msp/keystore/key.pem -o orgx-orderer:80
+channel join -b ./channel3_config.block
+lifecycle chaincode install ../chaincode/basic.tar.gz
+lifecycle chaincode queryinstalled
+lifecycle chaincode approveformyorg -o orgx-orderer:80 --channelID channel3 --name basic --version 1.0 --package-id basic_1.0:86ba496f42fa40b99352ad0441b479a77dd35cd25c7fbb13e31d10572894abb6  --sequence 1 --cafile ../admin-tls-msp/tlscacerts/cacert-tls-admin.pem   --tls --certfile ../admin-tls-msp/signcerts/cert.pem  --keyfile  ../admin-tls-msp/keystore/key.pem
+lifecycle chaincode checkcommitreadiness --channelID channel3 --name basic --version 1.0 --sequence 1 --tls --cafile ../admin-tls-msp/tlscacerts/cacert-tls-admin.pem --certfile ../admin-tls-msp/signcerts/cert.pem --keyfile ..../admin-tls-msp/keystore/key.pem --output json
+lifecycle chaincode commit -o orgy-orderer:80 --channelID channel3 --name basic --version 1.0 --sequence 1 --tls --cafile ../admin-tls-msp/tlscacerts/cacert-tls-admin.pem --peerAddresses orgx-peer1:80 --tlsRootCertFiles ../admin-tls-msp/tlscacerts/cacert-tls-admin.pem
+chaincode invoke -o orgx-orderer:80 --tls --cafile ../admin-tls-msp/tlscacerts/cacert-tls-admin.pem --certfile ../admin-tls-msp/signcerts/cert.pem  --keyfile ../admin-tls-msp/keystore/key.pem -C channel3 -n basic --peerAddresses orgx-peer1:80 --tlsRootCertFiles ../admin-tls-msp/tlscacerts/cacert-tls-admin.pem -c '{"function":"InitLedger","Args":[]}'
