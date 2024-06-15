@@ -21,4 +21,9 @@ spec:
       port: 82
       targetPort: 2000
       nodePort: 30041
+    - protocol:  TCP
+      name: operations
+      port: 83
+      targetPort: 9004
+      nodePort: 30050
   type: NodePort

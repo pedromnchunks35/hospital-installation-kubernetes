@@ -39,3 +39,10 @@
     - orgx-peer-automation -> 30046
     - orgy-peer-automation -> 30047
     - orgz-peer-automation -> 30048
+  - obsolete ports 2
+    - orgx-orderer-operations -> 30050
+    - orgy-orderer-operations -> 30051
+    - orgz-orderer-operations -> 30052
+    - orgx-peer1-operations -> 30060
+    - orgy-peer1-operations -> 30061
+    - orgz-peer1-operations -> 30062
