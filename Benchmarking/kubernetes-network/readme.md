@@ -46,3 +46,5 @@
     - orgx-peer1-operations -> 30060
     - orgy-peer1-operations -> 30061
     - orgz-peer1-operations -> 30062
+  - port for all peers
+    - 30070
