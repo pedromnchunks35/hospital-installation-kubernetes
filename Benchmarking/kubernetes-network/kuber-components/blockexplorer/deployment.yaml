@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: block-explorer-pod
+  labels:
+    service: block-explorer
+spec:
+  containers:
+    - name: block-explorer-container
+      image: pedrosilvamnchunks/blockexplorer
+      env:
+        - name: BLOCK_EXPLORER_DB_HOST
+          value: "0.0.0.0"
+        - name: BLOCK_EXPLORER_DB_PORT
+          value: "5432"
+        - name: BLOCK_EXPLORER_DB_USER
+          value: "root"
+        - name: BLOCK_EXPLORER_DB_PASSWORD
+          value: "12341234"
+        - name: BLOCK_EXPLORER_DB_NAME
+          value: "hlf-network"

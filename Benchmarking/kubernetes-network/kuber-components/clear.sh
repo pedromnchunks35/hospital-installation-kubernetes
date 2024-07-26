@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # DELETE EVERYTHING / STOP EVERYTHING
 for file in ./*/*.yaml; do
     sleep 2

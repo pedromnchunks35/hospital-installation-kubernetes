@@ -1,3 +1,4 @@
+#!/bin/bash
 # INIT THE PEERS
 for file in ./org*-or*/*.yaml; do
     kubectl delete -f "$file"
