@@ -10,7 +10,7 @@ spec:
       image: pedrosilvamnchunks/blockexplorer
       env:
         - name: BLOCK_EXPLORER_DB_HOST
-          value: "0.0.0.0"
+          value: "db-postgresql-block-explorer"
         - name: BLOCK_EXPLORER_DB_PORT
           value: "5432"
         - name: BLOCK_EXPLORER_DB_USER

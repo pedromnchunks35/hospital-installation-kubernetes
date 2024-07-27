@@ -2,6 +2,9 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: orgy-peer1-deployment
+  labels:
+    ledger: orgy-couch-peer1
+    type-component: peer
 spec:
   replicas: 1
   selector:

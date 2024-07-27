@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: quarkus-rest-hlf-network
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      deployment: quarkus-rest-hlf-network
+  template:
+    metadata:
+      labels:
+        deployment: quarkus-rest-hlf-network
+        service: quarkus-rest-hlf-network
+    spec:
+      containers:
+        - name: quarkus-rest-hlf-network-container
+          image: pedrosilvamnchunks/quarkus-rest-hlf-network
+          env:
+            - name: QUARKUS_LAUNCH_DEVMODE
+              value: "true"

@@ -2,6 +2,9 @@ apiVersion: v1
 kind: Service
 metadata:
   name: orgy-peer1
+  labels:
+    type-component: peer
+    ledger: orgy-couch-peer1
 spec:
   selector:
     service: orgy-peer1
