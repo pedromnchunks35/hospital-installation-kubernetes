@@ -19,24 +19,13 @@ spec:
           env:
             - name: POSTGRES_PASSWORD
               value: "12341234"
-            - name: POSTGRES_USER 
+            - name: POSTGRES_USER
               value: root
             - name: POSTGRES_DB
               value: "hlf-network"
           volumeMounts:
             - mountPath: "/var/lib/postgresql/data"
               name: db-postgresql-block-explorer-volume
-          lifecycle:
-            postStart:
-              exec:
-                command:
-                  - "/bin/sh"
-                  - "-c"
-                  - |
-                    sleep 30 &&
-                    curl -X PUT http://admin:12341234@localhost:5984/_users &&
-                    curl -X PUT http://admin:12341234@localhost:5984/_replicator &&
-                    curl -X PUT http://admin:12341234@localhost:5984/_global_changes
       volumes:
         - name: db-postgresql-block-explorer-volume
           persistentVolumeClaim:

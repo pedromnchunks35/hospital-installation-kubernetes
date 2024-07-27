@@ -2,6 +2,9 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: orgx-peer1-deployment
+  labels:
+    ledger: orgx-couch-peer1
+    type-component: peer
 spec:
   replicas: 1
   selector:
