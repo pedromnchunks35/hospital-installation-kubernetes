@@ -4,6 +4,8 @@ metadata:
   name: orgy-orderer
   labels:
     type-component: orderer
+    name-component: orgy-orderer
+    msp: OrgyMSP
 spec:
   selector:
     service: orgy-orderer

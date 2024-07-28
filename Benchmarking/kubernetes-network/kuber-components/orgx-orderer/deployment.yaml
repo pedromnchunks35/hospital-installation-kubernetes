@@ -4,6 +4,8 @@ metadata:
   name: orgx-orderer-deployment
   labels:
     type-component: orderer
+    name-component: orgx-orderer
+    msp: OrgxMSP
 spec:
   replicas: 1
   selector:
@@ -15,6 +17,9 @@ spec:
         deployment: orgx-orderer
         service: orgx-orderer
         general: all-orderers
+        type-component: orderer
+        name-component: orgx-orderer
+        msp: OrgxMSP
     spec:
       containers:
         - name: orgx-orderer-container

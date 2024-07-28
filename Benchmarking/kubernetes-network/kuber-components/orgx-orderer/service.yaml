@@ -4,6 +4,8 @@ metadata:
   name: orgx-orderer
   labels:
     type-component: orderer
+    name-component: orgx-orderer
+    msp: OrgxMSP
 spec:
   selector:
     service: orgx-orderer

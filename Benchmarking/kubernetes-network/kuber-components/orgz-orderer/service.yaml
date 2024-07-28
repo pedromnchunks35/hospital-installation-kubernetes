@@ -4,6 +4,8 @@ metadata:
   name: orgz-orderer
   labels:
     type-component: orderer
+    name-component: orgz-orderer
+    msp: OrgzMSP
 spec:
   selector:
     service: orgz-orderer
@@ -23,7 +25,7 @@ spec:
       port: 82
       targetPort: 2000
       nodePort: 30045
-    - protocol:  TCP
+    - protocol: TCP
       name: operations
       port: 83
       targetPort: 9004

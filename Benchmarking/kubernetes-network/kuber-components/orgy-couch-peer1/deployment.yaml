@@ -2,6 +2,10 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: orgy-couch-peer1-deployment
+  labels:
+    type-component: couch
+    name-component: orgy-couch-peer1
+    msp: OrgyMSP
 spec:
   replicas: 1
   selector:
@@ -12,6 +16,9 @@ spec:
       labels:
         deployment: orgy-couch-peer1
         service: orgy-couch-peer1
+        type-component: couch
+        name-component: orgy-couch-peer1
+        msp: OrgyMSP
     spec:
       containers:
         - name: orgy-couch-peer1-container

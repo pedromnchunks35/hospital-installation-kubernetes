@@ -2,6 +2,10 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: orgx-couch-peer1-deployment
+  labels:
+    type-component: couch
+    name-component: orgx-couch-peer1
+    msp: OrgxMSP
 spec:
   replicas: 1
   selector:
@@ -12,6 +16,9 @@ spec:
       labels:
         deployment: orgx-couch-peer1
         service: orgx-couch-peer1
+        type-component: couch
+        name-component: orgx-couch-peer1
+        msp: OrgxMSP
     spec:
       containers:
         - name: orgx-couch-peer1-container
