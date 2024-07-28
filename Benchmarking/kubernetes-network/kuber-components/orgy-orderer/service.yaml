@@ -4,12 +4,14 @@ metadata:
   name: orgy-orderer
   labels:
     type-component: orderer
+    name-component: orgy-orderer
+    msp: OrgyMSP
 spec:
   selector:
     service: orgy-orderer
   ports:
     - protocol: TCP
-      name: tcp-main-port
+      name: tcp
       port: 80
       targetPort: 7777
       nodePort: 30014

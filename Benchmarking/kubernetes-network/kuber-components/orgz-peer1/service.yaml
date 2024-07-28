@@ -5,6 +5,8 @@ metadata:
   labels:
     type-component: peer
     ledger: orgz-couch-peer1
+    name-component: orgz-peer1
+    msp: OrgzMSP
 spec:
   selector:
     service: orgz-peer1

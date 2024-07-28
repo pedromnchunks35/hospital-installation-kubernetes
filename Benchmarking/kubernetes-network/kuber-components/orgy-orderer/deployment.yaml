@@ -4,6 +4,8 @@ metadata:
   name: orgy-orderer-deployment
   labels:
     type-component: orderer
+    name-component: orgy-orderer
+    msp: OrgyMSP
 spec:
   replicas: 1
   selector:
@@ -15,6 +17,9 @@ spec:
         deployment: orgy-orderer
         service: orgy-orderer
         general: all-orderers
+        type-component: orderer
+        name-component: orgy-orderer
+        msp: OrgyMSP
     spec:
       containers:
         - name: orgy-orderer-container

@@ -4,12 +4,14 @@ metadata:
   name: orgx-orderer
   labels:
     type-component: orderer
+    name-component: orgx-orderer
+    msp: OrgxMSP
 spec:
   selector:
     service: orgx-orderer
   ports:
     - protocol: TCP
-      name: tcp-main-port
+      name: tcp
       port: 80
       targetPort: 7777
       nodePort: 30013

@@ -5,6 +5,8 @@ metadata:
   labels:
     peer-parent: orgx-peer1
     type-component: couch
+    name-component: orgx-couch-peer1
+    msp: OrgxMSP
 spec:
   selector:
     service: orgx-couch-peer1

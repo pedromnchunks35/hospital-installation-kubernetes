@@ -5,6 +5,8 @@ metadata:
   labels:
     type-component: peer
     ledger: orgx-couch-peer1
+    name-component: orgx-peer1
+    msp: OrgxMSP
 spec:
   selector:
     service: orgx-peer1
@@ -19,7 +21,7 @@ spec:
       port: 82
       targetPort: 2000
       nodePort: 30046
-    - protocol:  TCP
+    - protocol: TCP
       name: operations
       port: 83
       targetPort: 9008

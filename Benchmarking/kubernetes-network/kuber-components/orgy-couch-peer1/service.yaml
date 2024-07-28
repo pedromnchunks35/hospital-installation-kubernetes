@@ -5,6 +5,8 @@ metadata:
   labels:
     peer-parent: orgy-peer1
     type-component: couch
+    name-component: orgy-couch-peer1
+    msp: OrgyMSP
 spec:
   selector:
     service: orgy-couch-peer1

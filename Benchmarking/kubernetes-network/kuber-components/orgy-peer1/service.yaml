@@ -5,6 +5,8 @@ metadata:
   labels:
     type-component: peer
     ledger: orgy-couch-peer1
+    name-component: orgy-peer1
+    msp: OrgyMSP
 spec:
   selector:
     service: orgy-peer1
@@ -19,7 +21,7 @@ spec:
       port: 82
       targetPort: 2000
       nodePort: 30047
-    - protocol:  TCP
+    - protocol: TCP
       name: operations
       port: 83
       targetPort: 9008

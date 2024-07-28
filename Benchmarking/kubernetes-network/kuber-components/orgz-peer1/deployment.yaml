@@ -5,6 +5,8 @@ metadata:
   labels:
     ledger: orgz-couch-peer1
     type-component: peer
+    name-component: orgz-peer1
+    msp: OrgzMSP
 spec:
   replicas: 1
   selector:
@@ -16,6 +18,10 @@ spec:
         deployment: orgz-peer1
         service: orgz-peer1
         general: all-peers
+        ledger: orgz-couch-peer1
+        type-component: peer
+        name-component: orgz-peer1
+        msp: OrgzMSP
     spec:
       containers:
         - name: orgz-peer1-container
