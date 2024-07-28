@@ -48,3 +48,16 @@
     - orgz-peer1-operations -> 30062
   - port for all peers
     - 30070
+# Labels
+- We are adding the following important labels per component:
+  - msp
+    - The msp in hlf network of the component under scrutinity
+  - type-component
+    - The type of the componenent (peer,orderer,etc..)
+  - ledger
+    - For the peers its the way we have to know which component is the ledger
+  - name-component
+    - The name of the component that its under work
+# Ports naming
+- We should name the main port as "tcp" because of quarkus-rest
+- We choose tcp only because for istio we must have tcp contained

@@ -11,7 +11,7 @@ spec:
     service: orgz-orderer
   ports:
     - protocol: TCP
-      name: tcp-main-port
+      name: tcp
       port: 80
       targetPort: 7777
       nodePort: 30015
