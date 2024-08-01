@@ -1,10 +1,21 @@
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: multi-client-pod
-  labels:
-    service: multi-client
+  name: multi-client-deployment
 spec:
-  containers:
-  - name: multi-client-container
-    image: pedrosilvamnchunks/multi-client:latest
+  replicas: 1
+  selector:
+    matchLabels:
+      deployment: multi-client
+  template:
+    metadata:
+      labels:
+        deployment: multi-client
+        service: multi-client
+    spec:
+      containers:
+        - name: multi-client-container
+          image: pedrosilvamnchunks/multi-client:latest
+          env:
+            - name: DEPLOYED_IN_CLUSTER
+              value: "true"
