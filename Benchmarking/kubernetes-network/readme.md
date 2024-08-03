@@ -29,6 +29,8 @@
     - orgx-peer1 -> 30016
     - orgy-peer1 -> 30017
     - orgz-peer1 -> 30018
+    - prometheus -> 30019
+    - keycloak -> 30020
   - Obsolete ports
     - orgx-orderer-admin -> 30040
     - orgx-orderer-automation -> 30041

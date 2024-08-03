@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: keycloak-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      deployment: keycloak
+  template:
+    metadata:
+      labels:
+        deployment: keycloak
+        service: keycloak
+    spec:
+      containers:
+        - name: keycloak-container
+          image: quay.io/keycloak/keycloak:25.0.2
+          env:
+            - name: KEYCLOAK_ADMIN
+              value: "admin"
+            - name: KEYCLOAK_ADMIN_PASSWORD
+              value: "12341234"
+            - name: DB_VENDOR
+              value: "postgres"
+            - name: DB_ADDR
+              value: ""
+            - name: DB_PORT
+              value: 80
+            - name: DB_DATABASE
+              value: ""
+            - name: DB_USER
+              value: ""
+            - name: DB_PASSWORD
+              value: ""
