@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prometheus-deployment
+  labels:
+    name-component: prometheus
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      deployment: prometheus
+  template:
+    metadata:
+      labels:
+        deployment: prometheus
+        service: prometheus
+    spec:
+      containers:
+        - name: prometheus-container
+          image: pedrosilvamnchunks/prometheus-hlf:latest
